@@ -14,6 +14,8 @@
 
 ## Usage
 
+`helix-redirect` is a service that will be called from `helix-dispatch`. It reads a repository's [`helix-redirects.yaml`](https://github.com/adobe/helix-shared/blob/master/docs/redirects.md), retrieves all linked redirect spreadsheets, evaluates the current URL against the configured redirect rules and returns either a 3xx redirect or a 204 (no content) response to indicate that no redirect rules apply to the current URL.
+
 ```bash
 curl https://adobeioruntime.net/api/v1/web/helix/helix-services/redirect@v1
 ```

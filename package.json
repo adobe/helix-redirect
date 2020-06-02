@@ -1,6 +1,6 @@
 {
   "name": "@adobe/helix-redirect",
-  "version": "1.4.9",
+  "version": "1.0.0",
   "private": true,
   "description": "Helix Redirect",
   "main": "src/index.js",

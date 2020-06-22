@@ -13,15 +13,51 @@ const { wrap } = require('@adobe/openwhisk-action-utils');
 const { logger } = require('@adobe/openwhisk-action-logger');
 const { wrap: status } = require('@adobe/helix-status');
 const { epsagon } = require('@adobe/helix-epsagon');
+const { RedirectConfig } = require('@adobe/helix-shared');
 
 /**
  * This is the main function
  * @param {string} name name of the person to greet
  * @returns {object} a greeting
  */
-function main({ name = 'world' }) {
+async function main({ owner, repo, ref, path }) {
+
+  const config = await new RedirectConfig()
+    .withRepo(owner, repo, ref)
+    .init();
+
+  const { url, type } = config.match(path);
+
+  if (type === 'temporary') {
+    return {
+      statusCode: 302,
+      body: `moved temporarily <a href="${url}">here</a>`,
+      headers: {
+        Location: url
+      }
+    }
+  } else if (type === 'permanent') {
+    return {
+      statusCode: 302,
+      body: `moved permanently <a href="${url}">here</a>`,
+      headers: {
+        'Cache-Control': 'max-age=30000000',
+        Location: url
+      }
+    }
+  } else if (type === 'internal') {
+    return {
+      statusCode: 307,
+      body: `moved internally <a href="${url}">here</a>`,
+      headers: {
+        'HLX-Refetch': 'yes',
+        Location: url
+      }
+    }
+  }
   return {
-    body: `Hello, ${name}.`,
+    statusCode: 204, // no content
+    body: `No redirect`,
   };
 }
 

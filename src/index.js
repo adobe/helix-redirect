@@ -13,51 +13,52 @@ const { wrap } = require('@adobe/openwhisk-action-utils');
 const { logger } = require('@adobe/openwhisk-action-logger');
 const { wrap: status } = require('@adobe/helix-status');
 const { epsagon } = require('@adobe/helix-epsagon');
-const { RedirectConfig } = require('@adobe/helix-shared');
+const RedirectConfig = require('@adobe/helix-shared/src/RedirectConfig');
 
 /**
  * This is the main function
  * @param {string} name name of the person to greet
  * @returns {object} a greeting
  */
-async function main({ owner, repo, ref, path }) {
-
+async function main({
+  owner, repo, ref, path,
+}) {
   const config = await new RedirectConfig()
     .withRepo(owner, repo, ref)
     .init();
 
-  const { url, type } = config.match(path);
+  const match = await config.match(path);
 
-  if (type === 'temporary') {
+  if (match && match.type === 'temporary') {
     return {
       statusCode: 302,
-      body: `moved temporarily <a href="${url}">here</a>`,
+      body: `moved temporarily <a href="${match.url}">here</a>`,
       headers: {
-        Location: url
-      }
-    }
-  } else if (type === 'permanent') {
+        Location: match.url,
+      },
+    };
+  } else if (match && match.type === 'permanent') {
     return {
       statusCode: 302,
-      body: `moved permanently <a href="${url}">here</a>`,
+      body: `moved permanently <a href="${match.url}">here</a>`,
       headers: {
         'Cache-Control': 'max-age=30000000',
-        Location: url
-      }
-    }
-  } else if (type === 'internal') {
+        Location: match.url,
+      },
+    };
+  } else if (match && match.type === 'internal') {
     return {
       statusCode: 307,
-      body: `moved internally <a href="${url}">here</a>`,
+      body: `moved internally <a href="${match.url}">here</a>`,
       headers: {
         'HLX-Refetch': 'yes',
-        Location: url
-      }
-    }
+        Location: match.url,
+      },
+    };
   }
   return {
     statusCode: 204, // no content
-    body: `No redirect`,
+    body: 'No redirect',
   };
 }
 

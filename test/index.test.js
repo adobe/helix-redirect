@@ -18,13 +18,32 @@ const assert = require('assert');
 const index = require('../src/index.js').main;
 
 describe('Index Tests', () => {
-  it('index function is present', async () => {
-    const result = await index({});
-    assert.deepEqual(result, { body: 'Hello, world.' });
+  it('204 when no path provided', async () => {
+    const result = await index({
+      owner: 'trieloff',
+      repo: 'helix-demo',
+      ref: '4e05a4e2c7aac6dd8d5f2b6dcf05815994812d7d',
+    });
+    assert.equal(result.statusCode, 204);
   });
 
-  it('index function returns an object', async () => {
-    const result = await index();
-    assert.equal(typeof result, 'object');
+  it('204 when non-matching path provided', async () => {
+    const result = await index({
+      owner: 'trieloff',
+      repo: 'helix-demo',
+      ref: '4e05a4e2c7aac6dd8d5f2b6dcf05815994812d7d',
+      path: '/do-not-redirect-me',
+    });
+    assert.equal(result.statusCode, 204);
+  });
+
+  it('302 for PHP', async () => {
+    const result = await index({
+      owner: 'trieloff',
+      repo: 'helix-demo',
+      ref: '4e05a4e2c7aac6dd8d5f2b6dcf05815994812d7d',
+      path: '/test.php',
+    });
+    assert.equal(result.statusCode, 302);
   });
 });

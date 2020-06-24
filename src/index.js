@@ -23,6 +23,13 @@ const RedirectConfig = require('@adobe/helix-shared/src/RedirectConfig');
 async function main({
   owner, repo, ref, path,
 }) {
+  if (!(owner && repo && ref)) {
+    return {
+      statusCode: 400,
+      body: 'missing owner, repo, or ref',
+    };
+  }
+
   const config = await new RedirectConfig()
     .withRepo(owner, repo, ref)
     .init();
@@ -39,7 +46,7 @@ async function main({
     };
   } else if (match && match.type === 'permanent') {
     return {
-      statusCode: 302,
+      statusCode: 301,
       body: `moved permanently <a href="${match.url}">here</a>`,
       headers: {
         'Cache-Control': 'max-age=30000000',

@@ -19,35 +19,124 @@ const { setupPolly } = require('./utils.js');
 
 describe('Index Tests', () => {
   setupPolly({
-    recordIfMissing: true,
+    recordIfMissing: false,
   });
 
-  it('204 when no path provided', async () => {
+  it('400 when params missing', async () => {
+    const result = await index({});
+    assert.equal(result.statusCode, 400);
+  });
+
+  it('204 when no path provided', async function test() {
+    const { server } = this.polly;
+
+    server
+      .get('https://raw.githubusercontent.com/adobe/theblog/branch1/:path')
+      .intercept((req, res) => {
+        res.status(200).send(`
+redirects:
+  - from: (.*).php
+    to: $1.html
+    type: temporary
+      `);
+      });
+
     const result = await index({
-      owner: 'trieloff',
-      repo: 'helix-demo',
-      ref: '4e05a4e2c7aac6dd8d5f2b6dcf05815994812d7d',
+      owner: 'adobe',
+      repo: 'theblog',
+      ref: 'branch1',
     });
     assert.equal(result.statusCode, 204);
   });
 
-  it('204 when non-matching path provided', async () => {
+  it('204 when non-matching path provided', async function test() {
+    const { server } = this.polly;
+
+    server
+      .get('https://raw.githubusercontent.com/adobe/theblog/branch2/:path')
+      .intercept((req, res) => {
+        res.status(200).send(`
+redirects:
+  - from: (.*).php
+    to: $1.html
+    type: temporary
+      `);
+      });
+
     const result = await index({
-      owner: 'trieloff',
-      repo: 'helix-demo',
-      ref: '4e05a4e2c7aac6dd8d5f2b6dcf05815994812d7d',
+      owner: 'adobe',
+      repo: 'theblog',
+      ref: 'branch2',
       path: '/do-not-redirect-me',
     });
     assert.equal(result.statusCode, 204);
   });
 
-  it('302 for PHP', async () => {
+  it('301 for PHP', async function test() {
+    const { server } = this.polly;
+
+    server
+      .get('https://raw.githubusercontent.com/adobe/theblog/branch3/:path')
+      .intercept((req, res) => {
+        res.status(200).send(`
+redirects:
+  - from: (.*).php
+    to: $1.html
+      `);
+      });
+
     const result = await index({
-      owner: 'trieloff',
-      repo: 'helix-demo',
-      ref: '4e05a4e2c7aac6dd8d5f2b6dcf05815994812d7d',
+      owner: 'adobe',
+      repo: 'theblog',
+      ref: 'branch3',
+      path: '/test.php',
+    });
+    assert.equal(result.statusCode, 301);
+  });
+
+  it('Temp Redirect', async function test() {
+    const { server } = this.polly;
+
+    server
+      .get('https://raw.githubusercontent.com/adobe/theblog/branch4/:path')
+      .intercept((req, res) => {
+        res.status(200).send(`
+redirects:
+  - from: (.*).php
+    to: $1.html
+    type: temporary
+      `);
+      });
+
+    const result = await index({
+      owner: 'adobe',
+      repo: 'theblog',
+      ref: 'branch4',
       path: '/test.php',
     });
     assert.equal(result.statusCode, 302);
+  });
+
+  it('Internal Redirect', async function test() {
+    const { server } = this.polly;
+
+    server
+      .get('https://raw.githubusercontent.com/adobe/theblog/branch5/:path')
+      .intercept((req, res) => {
+        res.status(200).send(`
+redirects:
+  - from: (.*).php
+    to: $1.html
+    type: internal
+      `);
+      });
+
+    const result = await index({
+      owner: 'adobe',
+      repo: 'theblog',
+      ref: 'branch5',
+      path: '/test.php',
+    });
+    assert.equal(result.statusCode, 307);
   });
 });

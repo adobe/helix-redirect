@@ -11,13 +11,17 @@
  */
 
 /* eslint-env mocha */
-
-'use strict';
+process.env.HELIX_FETCH_FORCE_HTTP1 = 'true';
 
 const assert = require('assert');
 const index = require('../src/index.js').main;
+const { setupPolly } = require('./utils.js');
 
 describe('Index Tests', () => {
+  setupPolly({
+    recordIfMissing: true,
+  });
+
   it('204 when no path provided', async () => {
     const result = await index({
       owner: 'trieloff',

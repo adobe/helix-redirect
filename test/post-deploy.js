@@ -43,7 +43,8 @@ describe('Post-Deploy Tests', () => {
       .redirects(0)
       .then((response) => {
         expect(response).to.have.status(204);
-      }).catch((e) => {
+      })
+      .catch((e) => {
         throw e;
       });
   }).timeout(10000);
@@ -59,7 +60,8 @@ describe('Post-Deploy Tests', () => {
       .redirects(0)
       .then((response) => {
         expect(response).to.have.status(302);
-      }).catch((e) => {
+      })
+      .catch((e) => {
         throw e;
       });
   }).timeout(10000);

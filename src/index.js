@@ -39,7 +39,7 @@ async function main({
   if (match && match.type === 'temporary') {
     return {
       statusCode: 302,
-      body: `moved temporarily <a href="${match.url}">here</a>`,
+      body: 'moved temporarily',
       headers: {
         Location: match.url,
       },
@@ -47,7 +47,7 @@ async function main({
   } else if (match && match.type === 'permanent') {
     return {
       statusCode: 301,
-      body: `moved permanently <a href="${match.url}">here</a>`,
+      body: 'moved permanently',
       headers: {
         'Cache-Control': 'max-age=30000000',
         Location: match.url,
@@ -56,7 +56,7 @@ async function main({
   } else if (match && match.type === 'internal') {
     return {
       statusCode: 307,
-      body: `moved internally <a href="${match.url}">here</a>`,
+      body: 'moved internally',
       headers: {
         'HLX-Refetch': 'yes',
         Location: match.url,

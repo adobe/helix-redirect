@@ -40,6 +40,7 @@ describe('Post-Deploy Tests', () => {
     await chai
       .request('https://adobeioruntime.net/')
       .get(`${getbaseurl()}${qs}`)
+      .redirects(0)
       .then((response) => {
         expect(response).to.have.status(204);
       }).catch((e) => {
@@ -47,7 +48,7 @@ describe('Post-Deploy Tests', () => {
       });
   }).timeout(10000);
 
-  it('301 Redirect', async () => {
+  it('302 Redirect', async () => {
     const qs = '?owner=trieloff&repo=helix-demo&ref=528fd4692b6e4cd47ee9a11a133e7c6728b51fe5&path=test.php';
     // eslint-disable-next-line no-console
     console.log(`Trying https://adobeioruntime.net/${getbaseurl()}${qs}`);
@@ -55,8 +56,9 @@ describe('Post-Deploy Tests', () => {
     await chai
       .request('https://adobeioruntime.net/')
       .get(`${getbaseurl()}${qs}`)
+      .redirects(0)
       .then((response) => {
-        expect(response).to.have.status(301);
+        expect(response).to.have.status(302);
       }).catch((e) => {
         throw e;
       });

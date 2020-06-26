@@ -33,7 +33,7 @@ function getbaseurl() {
 
 describe('Post-Deploy Tests', () => {
   it('301 Redirect', async () => {
-    const qs = '?owner=trieloff&repo=helix-demo&ref=4e05a4e2c7aac6dd8d5f2b6dcf05815994812d7d&path=test.php';
+    const qs = '?owner=trieloff&repo=helix-demo&ref=528fd4692b6e4cd47ee9a11a133e7c6728b51fe5&path=test.php';
     // eslint-disable-next-line no-console
     console.log(`Trying https://adobeioruntime.net/${getbaseurl()}${qs}`);
 
@@ -48,7 +48,7 @@ describe('Post-Deploy Tests', () => {
   }).timeout(10000);
 
   it('No Redirect', async () => {
-    const qs = '?owner=trieloff&repo=helix-demo&ref=4e05a4e2c7aac6dd8d5f2b6dcf05815994812d7d&path=test.md';
+    const qs = '?owner=trieloff&repo=helix-demo&ref=528fd4692b6e4cd47ee9a11a133e7c6728b51fe5&path=test.md';
     // eslint-disable-next-line no-console
     console.log(`Trying https://adobeioruntime.net/${getbaseurl()}${qs}`);
 

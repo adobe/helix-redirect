@@ -13,15 +13,59 @@ const { wrap } = require('@adobe/openwhisk-action-utils');
 const { logger } = require('@adobe/openwhisk-action-logger');
 const { wrap: status } = require('@adobe/helix-status');
 const { epsagon } = require('@adobe/helix-epsagon');
+const RedirectConfig = require('@adobe/helix-shared/src/RedirectConfig');
 
 /**
  * This is the main function
  * @param {string} name name of the person to greet
  * @returns {object} a greeting
  */
-function main({ name = 'world' }) {
+async function main({
+  owner, repo, ref, path,
+}) {
+  if (!(owner && repo && ref)) {
+    return {
+      statusCode: 400,
+      body: 'missing owner, repo, or ref',
+    };
+  }
+
+  const config = await new RedirectConfig()
+    .withRepo(owner, repo, ref)
+    .init();
+
+  const match = await config.match(path);
+
+  if (match && match.type === 'temporary') {
+    return {
+      statusCode: 302,
+      body: 'moved temporarily',
+      headers: {
+        Location: match.url,
+      },
+    };
+  } else if (match && match.type === 'permanent') {
+    return {
+      statusCode: 301,
+      body: 'moved permanently',
+      headers: {
+        'Cache-Control': 'max-age=30000000',
+        Location: match.url,
+      },
+    };
+  } else if (match && match.type === 'internal') {
+    return {
+      statusCode: 307,
+      body: 'moved internally',
+      headers: {
+        'HLX-Refetch': 'yes',
+        Location: match.url,
+      },
+    };
+  }
   return {
-    body: `Hello, ${name}.`,
+    statusCode: 204, // no content
+    body: 'No redirect',
   };
 }
 

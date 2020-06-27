@@ -1,3 +1,16 @@
+# [1.1.0](https://github.com/adobe/helix-redirect/compare/v1.0.7...v1.1.0) (2020-06-27)
+
+
+### Bug Fixes
+
+* **index:** remove possible XSS ([6f97046](https://github.com/adobe/helix-redirect/commit/6f9704648afb89a5fe84337b490b3b3ef26caedd))
+* **index:** use async match API ([fb9d866](https://github.com/adobe/helix-redirect/commit/fb9d866d2c2cd44567eb2c981f5137faaef3ca1e))
+
+
+### Features
+
+* **index:** implement redirects ([639c568](https://github.com/adobe/helix-redirect/commit/639c568b85a19f53ba8ff06883fa637621d67689))
+
 ## [1.0.7](https://github.com/adobe/helix-redirect/compare/v1.0.6...v1.0.7) (2020-06-16)
 
 

@@ -1,3 +1,10 @@
+## [1.1.1](https://github.com/adobe/helix-redirect/compare/v1.1.0...v1.1.1) (2020-06-28)
+
+
+### Bug Fixes
+
+* **deps:** pin dependencies ([#22](https://github.com/adobe/helix-redirect/issues/22)) ([0144be7](https://github.com/adobe/helix-redirect/commit/0144be77bcfba788447f431f60b5c29a7d8f13e3))
+
 # [1.1.0](https://github.com/adobe/helix-redirect/compare/v1.0.7...v1.1.0) (2020-06-27)
 
 

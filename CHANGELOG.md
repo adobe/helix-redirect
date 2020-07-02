@@ -1,3 +1,10 @@
+## [1.1.7](https://github.com/adobe/helix-redirect/compare/v1.1.6...v1.1.7) (2020-07-02)
+
+
+### Bug Fixes
+
+* **deps:** update minor ([fb28cc9](https://github.com/adobe/helix-redirect/commit/fb28cc9e3a4cc9d7c0f14fb9176bd2ec9dfb143c))
+
 ## [1.1.6](https://github.com/adobe/helix-redirect/compare/v1.1.5...v1.1.6) (2020-07-02)
 
 

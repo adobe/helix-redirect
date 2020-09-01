@@ -65,4 +65,38 @@ describe('Post-Deploy Tests', () => {
         throw e;
       });
   }).timeout(10000);
+
+  it('/feed Redirect', async () => {
+    const qs = '?owner=adobe&repo=theblog&ref=34e880537c4bb787cdc6df0b71fcf76cc496bca5&path=/tags/news/feed';
+    // eslint-disable-next-line no-console
+    console.log(`Trying https://adobeioruntime.net/${getbaseurl()}${qs}`);
+
+    await chai
+      .request('https://adobeioruntime.net/')
+      .get(`${getbaseurl()}${qs}`)
+      .redirects(0)
+      .then((response) => {
+        expect(response).to.have.status(302);
+      })
+      .catch((e) => {
+        throw e;
+      });
+  }).timeout(10000);
+
+  it('/feed/ Redirect', async () => {
+    const qs = '?owner=adobe&repo=theblog&ref=34e880537c4bb787cdc6df0b71fcf76cc496bca5&path=/tags/news/feed/';
+    // eslint-disable-next-line no-console
+    console.log(`Trying https://adobeioruntime.net/${getbaseurl()}${qs}`);
+
+    await chai
+      .request('https://adobeioruntime.net/')
+      .get(`${getbaseurl()}${qs}`)
+      .redirects(0)
+      .then((response) => {
+        expect(response).to.have.status(302);
+      })
+      .catch((e) => {
+        throw e;
+      });
+  }).timeout(10000);
 });

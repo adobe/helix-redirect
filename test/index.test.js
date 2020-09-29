@@ -139,4 +139,38 @@ redirects:
     });
     assert.equal(result.statusCode, 307);
   });
+
+  it('Feed Redirect', async function test() {
+    const { server } = this.polly;
+
+    server
+      .get('https://raw.githubusercontent.com/adobe/theblog/branch6/:path')
+      .intercept((req, res) => {
+        res.status(200).send(`
+redirects:
+  - from: .*/feed/$
+    to: /feed.xml
+    type: temporary
+  - from: .*/feed$
+    to: /feed.xml
+    type: temporary
+      `);
+      });
+
+    const result1 = await index({
+      owner: 'adobe',
+      repo: 'theblog',
+      ref: 'branch6',
+      path: '/tags/news/feed',
+    });
+    assert.equal(result1.statusCode, 302);
+
+    const result2 = await index({
+      owner: 'adobe',
+      repo: 'theblog',
+      ref: 'branch6',
+      path: '/tags/news/feed/',
+    });
+    assert.equal(result2.statusCode, 302);
+  });
 });

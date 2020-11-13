@@ -1,3 +1,10 @@
+## [1.1.29](https://github.com/adobe/helix-redirect/compare/v1.1.28...v1.1.29) (2020-11-13)
+
+
+### Bug Fixes
+
+* **deps:** update dependency @adobe/helix-epsagon to v1.5.4 ([#90](https://github.com/adobe/helix-redirect/issues/90)) ([93fb09d](https://github.com/adobe/helix-redirect/commit/93fb09d97c02c6b4318a76bbebb06e3533fc744e))
+
 ## [1.1.28](https://github.com/adobe/helix-redirect/compare/v1.1.27...v1.1.28) (2020-11-09)
 
 

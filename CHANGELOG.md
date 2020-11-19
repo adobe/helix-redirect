@@ -1,3 +1,10 @@
+## [1.1.32](https://github.com/adobe/helix-redirect/compare/v1.1.31...v1.1.32) (2020-11-19)
+
+
+### Bug Fixes
+
+* **deps:** update dependency @adobe/helix-status to v8.2.2 ([#95](https://github.com/adobe/helix-redirect/issues/95)) ([9652e83](https://github.com/adobe/helix-redirect/commit/9652e83ed5267dfa9d18645e405fec76a33e09ec))
+
 ## [1.1.31](https://github.com/adobe/helix-redirect/compare/v1.1.30...v1.1.31) (2020-11-19)
 
 

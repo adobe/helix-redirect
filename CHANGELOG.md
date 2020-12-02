@@ -1,3 +1,10 @@
+## [1.1.35](https://github.com/adobe/helix-redirect/compare/v1.1.34...v1.1.35) (2020-12-02)
+
+
+### Bug Fixes
+
+* **deps:** update dependency @adobe/openwhisk-action-utils to v4.3.3 ([#101](https://github.com/adobe/helix-redirect/issues/101)) ([2c03e73](https://github.com/adobe/helix-redirect/commit/2c03e732a68a022eadd3572ae44cc74b349816f2))
+
 ## [1.1.34](https://github.com/adobe/helix-redirect/compare/v1.1.33...v1.1.34) (2020-12-01)
 
 

@@ -1,3 +1,10 @@
+## [1.1.44](https://github.com/adobe/helix-redirect/compare/v1.1.43...v1.1.44) (2020-12-25)
+
+
+### Bug Fixes
+
+* **deps:** update dependency @adobe/openwhisk-action-logger to v2.3.1 ([#111](https://github.com/adobe/helix-redirect/issues/111)) ([d3f60d6](https://github.com/adobe/helix-redirect/commit/d3f60d69d55ed2b32d3436ded6363a5b7db81f8d))
+
 ## [1.1.43](https://github.com/adobe/helix-redirect/compare/v1.1.42...v1.1.43) (2020-12-17)
 
 

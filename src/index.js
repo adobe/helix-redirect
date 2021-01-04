@@ -30,7 +30,6 @@ async function main(req) {
       status: 400,
     });
   }
-  console.log(owner, repo, ref, path);
 
   const config = await new RedirectConfig()
     .withRepo(owner, repo, ref)
@@ -38,7 +37,6 @@ async function main(req) {
 
   const match = await config.match(path);
 
-  console.log(config);
   if (match && match.type === 'temporary') {
     return new Response('moved temporarily', {
       status: 302,

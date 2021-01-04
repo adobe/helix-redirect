@@ -12,91 +12,87 @@
 
 /* eslint-env mocha */
 /* eslint-disable no-unused-expressions */
-
 const chai = require('chai');
 const chaiHttp = require('chai-http');
-const packjson = require('../package.json');
+const { createTargets } = require('./post-deploy-utils.js');
 
 chai.use(chaiHttp);
 const { expect } = chai;
 
-function getbaseurl() {
-  const namespace = 'helix';
-  const package = 'helix-services';
-  const name = packjson.name.replace('@adobe/helix-', '');
-  let version = `${packjson.version}`;
-  if (process.env.CI && process.env.CIRCLE_BUILD_NUM && process.env.CIRCLE_BRANCH !== 'main') {
-    version = `ci${process.env.CIRCLE_BUILD_NUM}`;
-  }
-  return `api/v1/web/${namespace}/${package}/${name}@${version}`;
-}
+createTargets().forEach((target) => {
+  describe(`Post-Deploy Tests (${target.title()}) #online`, () => {
+    before(function beforeAll() {
+      if (!target.enabled()) {
+        this.skip();
+      }
+    });
 
-describe('Post-Deploy Tests', () => {
-  it('No Redirect', async () => {
-    const qs = '?owner=trieloff&repo=helix-demo&ref=528fd4692b6e4cd47ee9a11a133e7c6728b51fe5&path=test.md';
-    // eslint-disable-next-line no-console
-    console.log(`Trying https://adobeioruntime.net/${getbaseurl()}${qs}`);
+    it('No Redirect', async () => {
+      const qs = '?owner=trieloff&repo=helix-demo&ref=528fd4692b6e4cd47ee9a11a133e7c6728b51fe5&path=test.md';
+      const url = `${target.urlPath()}${qs}`;
+      // eslint-disable-next-line no-console
+      console.log(`Trying ${target.host()}${url}`);
+      await chai
+        .request(target.host())
+        .get(url)
+        .redirects(0)
+        .then((response) => {
+          expect(response).to.have.status(204);
+        })
+        .catch((e) => {
+          throw e;
+        });
+    }).timeout(20000);
 
-    await chai
-      .request('https://adobeioruntime.net/')
-      .get(`${getbaseurl()}${qs}`)
-      .redirects(0)
-      .then((response) => {
-        expect(response).to.have.status(204);
-      })
-      .catch((e) => {
-        throw e;
-      });
-  }).timeout(10000);
+    it('302 Redirect', async () => {
+      const qs = '?owner=trieloff&repo=helix-demo&ref=528fd4692b6e4cd47ee9a11a133e7c6728b51fe5&path=test.php';
+      const url = `${target.urlPath()}${qs}`;
+      // eslint-disable-next-line no-console
+      console.log(`Trying ${target.host()}${url}`);
+      await chai
+        .request(target.host())
+        .get(url)
+        .redirects(0)
+        .then((response) => {
+          expect(response).to.have.status(302);
+        })
+        .catch((e) => {
+          throw e;
+        });
+    }).timeout(20000);
 
-  it('302 Redirect', async () => {
-    const qs = '?owner=trieloff&repo=helix-demo&ref=528fd4692b6e4cd47ee9a11a133e7c6728b51fe5&path=test.php';
-    // eslint-disable-next-line no-console
-    console.log(`Trying https://adobeioruntime.net/${getbaseurl()}${qs}`);
+    it('/feed Redirect', async () => {
+      const qs = '?owner=adobe&repo=theblog&ref=34e880537c4bb787cdc6df0b71fcf76cc496bca5&path=/tags/news/feed';
+      const url = `${target.urlPath()}${qs}`;
+      // eslint-disable-next-line no-console
+      console.log(`Trying ${target.host()}${url}`);
+      await chai
+        .request(target.host())
+        .get(url)
+        .redirects(0)
+        .then((response) => {
+          expect(response).to.have.status(302);
+        })
+        .catch((e) => {
+          throw e;
+        });
+    }).timeout(20000);
 
-    await chai
-      .request('https://adobeioruntime.net/')
-      .get(`${getbaseurl()}${qs}`)
-      .redirects(0)
-      .then((response) => {
-        expect(response).to.have.status(302);
-      })
-      .catch((e) => {
-        throw e;
-      });
-  }).timeout(10000);
-
-  it('/feed Redirect', async () => {
-    const qs = '?owner=adobe&repo=theblog&ref=34e880537c4bb787cdc6df0b71fcf76cc496bca5&path=/tags/news/feed';
-    // eslint-disable-next-line no-console
-    console.log(`Trying https://adobeioruntime.net/${getbaseurl()}${qs}`);
-
-    await chai
-      .request('https://adobeioruntime.net/')
-      .get(`${getbaseurl()}${qs}`)
-      .redirects(0)
-      .then((response) => {
-        expect(response).to.have.status(302);
-      })
-      .catch((e) => {
-        throw e;
-      });
-  }).timeout(10000);
-
-  it('/feed/ Redirect', async () => {
-    const qs = '?owner=adobe&repo=theblog&ref=34e880537c4bb787cdc6df0b71fcf76cc496bca5&path=/tags/news/feed/';
-    // eslint-disable-next-line no-console
-    console.log(`Trying https://adobeioruntime.net/${getbaseurl()}${qs}`);
-
-    await chai
-      .request('https://adobeioruntime.net/')
-      .get(`${getbaseurl()}${qs}`)
-      .redirects(0)
-      .then((response) => {
-        expect(response).to.have.status(302);
-      })
-      .catch((e) => {
-        throw e;
-      });
-  }).timeout(10000);
+    it('/feed/ Redirect', async () => {
+      const qs = '?owner=adobe&repo=theblog&ref=34e880537c4bb787cdc6df0b71fcf76cc496bca5&path=/tags/news/feed/';
+      const url = `${target.urlPath()}${qs}`;
+      // eslint-disable-next-line no-console
+      console.log(`Trying ${target.host()}${url}`);
+      await chai
+        .request(target.host())
+        .get(url)
+        .redirects(0)
+        .then((response) => {
+          expect(response).to.have.status(302);
+        })
+        .catch((e) => {
+          throw e;
+        });
+    }).timeout(20000);
+  });
 });

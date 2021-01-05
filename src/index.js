@@ -9,25 +9,26 @@
  * OF ANY KIND, either express or implied. See the License for the specific language
  * governing permissions and limitations under the License.
  */
+const { Response } = require('node-fetch');
 const { wrap } = require('@adobe/openwhisk-action-utils');
 const { logger } = require('@adobe/openwhisk-action-logger');
 const { wrap: status } = require('@adobe/helix-status');
-const { epsagon } = require('@adobe/helix-epsagon');
 const RedirectConfig = require('@adobe/helix-shared/src/RedirectConfig');
 
 /**
  * This is the main function
- * @param {string} name name of the person to greet
- * @returns {object} a greeting
+ * @param {Request} req The request
  */
-async function main({
-  owner, repo, ref, path,
-}) {
+async function main(req) {
+  const { searchParams } = new URL(req.url);
+  const owner = searchParams.get('owner');
+  const repo = searchParams.get('repo');
+  const ref = searchParams.get('ref');
+  const path = searchParams.get('path');
   if (!(owner && repo && ref)) {
-    return {
-      statusCode: 400,
-      body: 'missing owner, repo, or ref',
-    };
+    return new Response('missing owner, repo, or ref', {
+      status: 400,
+    });
   }
 
   const config = await new RedirectConfig()
@@ -37,40 +38,35 @@ async function main({
   const match = await config.match(path);
 
   if (match && match.type === 'temporary') {
-    return {
-      statusCode: 302,
-      body: 'moved temporarily',
+    return new Response('moved temporarily', {
+      status: 302,
       headers: {
         Location: match.url,
       },
-    };
+    });
   } else if (match && match.type === 'permanent') {
-    return {
-      statusCode: 301,
-      body: 'moved permanently',
+    return new Response('moved permanently', {
+      status: 301,
       headers: {
         'Cache-Control': 'max-age=30000000',
         Location: match.url,
       },
-    };
+    });
   } else if (match && match.type === 'internal') {
-    return {
-      statusCode: 307,
-      body: 'moved internally',
+    return new Response('moved internally', {
+      status: 307,
       headers: {
         'HLX-Refetch': 'yes',
         Location: match.url,
       },
-    };
+    });
   }
-  return {
-    statusCode: 204, // no content
-    body: 'No redirect',
-  };
+  return new Response('No redirect', {
+    status: 204, // no content
+  });
 }
 
 module.exports.main = wrap(main)
-  .with(epsagon)
   .with(status)
   .with(logger.trace)
   .with(logger);

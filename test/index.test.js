@@ -14,8 +14,37 @@
 process.env.HELIX_FETCH_FORCE_HTTP1 = 'true';
 
 const assert = require('assert');
-const index = require('../src/index.js').main;
+const querystring = require('querystring');
+const { main } = require('../src/index.js');
 const { setupPolly } = require('./utils.js');
+
+function retrofit(fn) {
+  const resolver = {
+    createURL({ package, name, version }) {
+      return new URL(`https://adobeioruntime.net/api/v1/web/helix/${package}/${name}@${version}`);
+    },
+  };
+  return async (params = {}, env = {}) => {
+    const resp = await fn({
+      url: `https://content-proxy.com/proxy?${querystring.encode(params)}`,
+      headers: new Map(Object.entries(params.__ow_headers || {})),
+    }, {
+      resolver,
+      env,
+    });
+    return {
+      statusCode: resp.status,
+      body: String(resp.body),
+      headers: [...resp.headers.keys()].reduce((result, key) => {
+        // eslint-disable-next-line no-param-reassign
+        result[key] = resp.headers.get(key);
+        return result;
+      }, {}),
+    };
+  };
+}
+
+const index = retrofit(main);
 
 describe('Index Tests', () => {
   setupPolly({

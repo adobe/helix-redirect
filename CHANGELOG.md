@@ -1,3 +1,10 @@
+## [1.1.45](https://github.com/adobe/helix-redirect/compare/v1.1.44...v1.1.45) (2021-01-05)
+
+
+### Bug Fixes
+
+* migrate to helix-deploy ([d71ee4c](https://github.com/adobe/helix-redirect/commit/d71ee4cd3edc3b9fc78a65aa95cd0c3739b94e47)), closes [#114](https://github.com/adobe/helix-redirect/issues/114)
+
 ## [1.1.44](https://github.com/adobe/helix-redirect/compare/v1.1.43...v1.1.44) (2020-12-25)
 
 

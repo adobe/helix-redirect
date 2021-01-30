@@ -1,3 +1,10 @@
+## [1.1.51](https://github.com/adobe/helix-redirect/compare/v1.1.50...v1.1.51) (2021-01-30)
+
+
+### Bug Fixes
+
+* **ci:** use latest orb ([9be5761](https://github.com/adobe/helix-redirect/commit/9be57613f13b2825a8ae53af4963381cd5f0e7b5))
+
 ## [1.1.50](https://github.com/adobe/helix-redirect/compare/v1.1.49...v1.1.50) (2021-01-30)
 
 

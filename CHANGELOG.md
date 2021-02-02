@@ -1,3 +1,10 @@
+## [1.1.55](https://github.com/adobe/helix-redirect/compare/v1.1.54...v1.1.55) (2021-02-02)
+
+
+### Bug Fixes
+
+* **ci:** enable AWS monitor ([59dd4d4](https://github.com/adobe/helix-redirect/commit/59dd4d4f364da099cbd235ce464b67c789c8d2cd))
+
 ## [1.1.54](https://github.com/adobe/helix-redirect/compare/v1.1.53...v1.1.54) (2021-02-02)
 
 

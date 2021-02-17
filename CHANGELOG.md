@@ -1,3 +1,10 @@
+## [1.1.58](https://github.com/adobe/helix-redirect/compare/v1.1.57...v1.1.58) (2021-02-17)
+
+
+### Bug Fixes
+
+* **deps:** update dependency @adobe/helix-fetch to v2.1.5 ([#152](https://github.com/adobe/helix-redirect/issues/152)) ([fb66439](https://github.com/adobe/helix-redirect/commit/fb664398dc85c755a1ca25c52d34408382c9e420))
+
 ## [1.1.57](https://github.com/adobe/helix-redirect/compare/v1.1.56...v1.1.57) (2021-02-15)
 
 

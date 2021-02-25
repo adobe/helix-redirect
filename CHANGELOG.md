@@ -1,3 +1,10 @@
+## [1.1.61](https://github.com/adobe/helix-redirect/compare/v1.1.60...v1.1.61) (2021-02-25)
+
+
+### Bug Fixes
+
+* **ci:** trigger deploy ([be86fbc](https://github.com/adobe/helix-redirect/commit/be86fbc7ace22ec407768f6559c2be0636ccc197))
+
 ## [1.1.60](https://github.com/adobe/helix-redirect/compare/v1.1.59...v1.1.60) (2021-02-22)
 
 

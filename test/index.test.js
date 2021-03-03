@@ -26,7 +26,7 @@ function retrofit(fn) {
   };
   return async (params = {}, env = {}) => {
     const resp = await fn({
-      url: `https://content-proxy.com/proxy?${querystring.encode(params)}`,
+      url: `https://helix.com/redirect?${querystring.encode(params)}`,
       headers: new Map(Object.entries(params.__ow_headers || {})),
     }, {
       resolver,
@@ -121,6 +121,46 @@ redirects:
       path: '/test.php',
     });
     assert.equal(result.statusCode, 301);
+  });
+
+  it('301 for dynamic redirect with json', async function test() {
+    const { server } = this.polly;
+    const data = {
+      total: 1,
+      offset: 0,
+      limit: 1,
+      data: [
+        {
+          Source: '/tag/coronavirus/',
+          Destination: 'https://blog.adobe.com/en/topics/covid-19.html',
+          Notes: '',
+        },
+      ],
+    };
+
+    server
+      .get('https://raw.githubusercontent.com/adobe/theblog/branch7/:path')
+      .intercept((req, res) => {
+        res.status(200).send(`
+redirects:
+  - https://master--theblog--adobe.hlx.page/redirects.json
+      `);
+      });
+
+    server
+      .get('https://master--theblog--adobe.hlx.page/redirects.json')
+      .intercept((req, res) => {
+        res.status(200).send(JSON.stringify(data));
+      });
+
+    const result = await index({
+      owner: 'adobe',
+      repo: 'theblog',
+      ref: 'branch7',
+      path: '/tag/coronavirus/',
+    });
+    assert.equal(result.statusCode, 301);
+    assert.equal(result.headers.location, 'https://blog.adobe.com/en/topics/covid-19.html');
   });
 
   it('Temp Redirect', async function test() {

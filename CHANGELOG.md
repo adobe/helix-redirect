@@ -1,3 +1,31 @@
+## [1.1.64](https://github.com/adobe/helix-redirect/compare/v1.1.63...v1.1.64) (2021-02-27)
+
+
+### Bug Fixes
+
+* **deps:** update adobe fixes ([#163](https://github.com/adobe/helix-redirect/issues/163)) ([c969871](https://github.com/adobe/helix-redirect/commit/c969871e03216b1f934b63d9924e68e8a609a7a2))
+
+## [1.1.63](https://github.com/adobe/helix-redirect/compare/v1.1.62...v1.1.63) (2021-02-26)
+
+
+### Bug Fixes
+
+* **deps:** update dependency @adobe/helix-shared to v7.19.12 ([#162](https://github.com/adobe/helix-redirect/issues/162)) ([aa3d6e5](https://github.com/adobe/helix-redirect/commit/aa3d6e5989ec8ffa3eb48d76017d572463825f98))
+
+## [1.1.62](https://github.com/adobe/helix-redirect/compare/v1.1.61...v1.1.62) (2021-02-26)
+
+
+### Bug Fixes
+
+* **deps:** update dependency @adobe/helix-fetch to v2.1.6 ([#161](https://github.com/adobe/helix-redirect/issues/161)) ([fd9cd98](https://github.com/adobe/helix-redirect/commit/fd9cd98de0f6d38691fef1156d7d0d5a7924c720))
+
+## [1.1.61](https://github.com/adobe/helix-redirect/compare/v1.1.60...v1.1.61) (2021-02-25)
+
+
+### Bug Fixes
+
+* **ci:** trigger deploy ([be86fbc](https://github.com/adobe/helix-redirect/commit/be86fbc7ace22ec407768f6559c2be0636ccc197))
+
 ## [1.1.60](https://github.com/adobe/helix-redirect/compare/v1.1.59...v1.1.60) (2021-02-22)
 
 

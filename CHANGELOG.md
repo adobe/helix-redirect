@@ -1,3 +1,10 @@
+# [1.2.0](https://github.com/adobe/helix-redirect/compare/v1.1.64...v1.2.0) (2021-03-03)
+
+
+### Features
+
+* **redirect:** support dynamic redirects via json ([#174](https://github.com/adobe/helix-redirect/issues/174)) ([fdd67e4](https://github.com/adobe/helix-redirect/commit/fdd67e4e101813890c3b05015dd70ccbb65799cd)), closes [#156](https://github.com/adobe/helix-redirect/issues/156)
+
 ## [1.1.64](https://github.com/adobe/helix-redirect/compare/v1.1.63...v1.1.64) (2021-02-27)
 
 

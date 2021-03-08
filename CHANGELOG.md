@@ -1,3 +1,10 @@
+## [1.2.1](https://github.com/adobe/helix-redirect/compare/v1.2.0...v1.2.1) (2021-03-08)
+
+
+### Bug Fixes
+
+* **cfg:** use 512mb memory ([#181](https://github.com/adobe/helix-redirect/issues/181)) ([64aff26](https://github.com/adobe/helix-redirect/commit/64aff269858e623f0c953380dda506ee59068826))
+
 # [1.2.0](https://github.com/adobe/helix-redirect/compare/v1.1.64...v1.2.0) (2021-03-03)
 
 

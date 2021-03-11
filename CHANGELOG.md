@@ -1,3 +1,10 @@
+## [1.2.6](https://github.com/adobe/helix-redirect/compare/v1.2.5...v1.2.6) (2021-03-11)
+
+
+### Bug Fixes
+
+* **deps:** update adobe fixes ([#186](https://github.com/adobe/helix-redirect/issues/186)) ([5c2c442](https://github.com/adobe/helix-redirect/commit/5c2c442d059f30c99b12a4f69f48336014393b77))
+
 ## [1.2.5](https://github.com/adobe/helix-redirect/compare/v1.2.4...v1.2.5) (2021-03-09)
 
 

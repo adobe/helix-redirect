@@ -1,3 +1,10 @@
+## [1.2.9](https://github.com/adobe/helix-redirect/compare/v1.2.8...v1.2.9) (2021-03-12)
+
+
+### Bug Fixes
+
+* **deps:** update dependency @adobe/helix-deploy to v3.14.0 ([#189](https://github.com/adobe/helix-redirect/issues/189)) ([2470fd7](https://github.com/adobe/helix-redirect/commit/2470fd73084ecb645f9bdff5a96ce42248728cd5))
+
 ## [1.2.8](https://github.com/adobe/helix-redirect/compare/v1.2.7...v1.2.8) (2021-03-12)
 
 

@@ -1,3 +1,10 @@
+# [1.3.0](https://github.com/adobe/helix-redirect/compare/v1.2.18...v1.3.0) (2021-03-31)
+
+
+### Features
+
+* **deploy:** google ([9761038](https://github.com/adobe/helix-redirect/commit/97610385d83ed23d17ee0df76ba66a8bf08e953b))
+
 ## [1.2.18](https://github.com/adobe/helix-redirect/compare/v1.2.17...v1.2.18) (2021-03-31)
 
 

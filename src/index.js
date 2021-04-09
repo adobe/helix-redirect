@@ -10,8 +10,8 @@
  * governing permissions and limitations under the License.
  */
 const { Response } = require('@adobe/helix-fetch');
-const { wrap } = require('@adobe/openwhisk-action-utils');
-const { logger } = require('@adobe/openwhisk-action-logger');
+const { wrap } = require('@adobe/helix-shared');
+const { logger } = require('@adobe/helix-universal-logger');
 const { wrap: status } = require('@adobe/helix-status');
 const RedirectConfig = require('@adobe/helix-shared/src/RedirectConfig');
 

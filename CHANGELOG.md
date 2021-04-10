@@ -1,3 +1,10 @@
+# [1.4.0](https://github.com/adobe/helix-redirect/compare/v1.3.3...v1.4.0) (2021-04-10)
+
+
+### Features
+
+* **log:** use universal logger ([#225](https://github.com/adobe/helix-redirect/issues/225)) ([25b9b13](https://github.com/adobe/helix-redirect/commit/25b9b1313e28bbaea1f509cfdb47c395dc07286a))
+
 ## [1.3.3](https://github.com/adobe/helix-redirect/compare/v1.3.2...v1.3.3) (2021-04-09)
 
 

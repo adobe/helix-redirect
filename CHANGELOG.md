@@ -1,3 +1,10 @@
+## [1.4.2](https://github.com/adobe/helix-redirect/compare/v1.4.1...v1.4.2) (2021-04-12)
+
+
+### Bug Fixes
+
+* **deps:** update dependency @adobe/helix-universal-logger to v1.0.2 ([#230](https://github.com/adobe/helix-redirect/issues/230)) ([032e08a](https://github.com/adobe/helix-redirect/commit/032e08a455b57168a38d2480848c2b408540fd93))
+
 ## [1.4.1](https://github.com/adobe/helix-redirect/compare/v1.4.0...v1.4.1) (2021-04-12)
 
 

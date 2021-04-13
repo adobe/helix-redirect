@@ -1,3 +1,10 @@
+## [1.4.4](https://github.com/adobe/helix-redirect/compare/v1.4.3...v1.4.4) (2021-04-13)
+
+
+### Bug Fixes
+
+* use helix-universal ([8494bd9](https://github.com/adobe/helix-redirect/commit/8494bd96d69a497a9171d62ea9ef032ce8a1b50b))
+
 ## [1.4.3](https://github.com/adobe/helix-redirect/compare/v1.4.2...v1.4.3) (2021-04-13)
 
 

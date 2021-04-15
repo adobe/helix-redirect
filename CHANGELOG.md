@@ -1,3 +1,10 @@
+## [1.4.6](https://github.com/adobe/helix-redirect/compare/v1.4.5...v1.4.6) (2021-04-15)
+
+
+### Bug Fixes
+
+* respect github token ([#235](https://github.com/adobe/helix-redirect/issues/235)) ([cd7ea3d](https://github.com/adobe/helix-redirect/commit/cd7ea3d81e1d1c21f8e801aa77b8a78b0fa59b31)), closes [#234](https://github.com/adobe/helix-redirect/issues/234)
+
 ## [1.4.5](https://github.com/adobe/helix-redirect/compare/v1.4.4...v1.4.5) (2021-04-15)
 
 

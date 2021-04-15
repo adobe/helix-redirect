@@ -78,6 +78,23 @@ redirects:
     assert.equal(result.statusCode, 204);
   });
 
+  it('204 for non existing redirect.yaml', async function test() {
+    const { server } = this.polly;
+
+    server
+      .get('https://raw.githubusercontent.com/adobe/theblog/branch2/helix-redirects.yaml')
+      .intercept((req, res) => {
+        res.status(404).send();
+      });
+
+    const result = await index({
+      owner: 'adobe',
+      repo: 'theblog',
+      ref: 'branch2',
+    });
+    assert.equal(result.statusCode, 204);
+  });
+
   it('204 when non-matching path provided', async function test() {
     const { server } = this.polly;
 
@@ -99,6 +116,35 @@ redirects:
       path: '/do-not-redirect-me',
     });
     assert.equal(result.statusCode, 204);
+  });
+
+  it('301 for PHP on private repo', async function test() {
+    const { server } = this.polly;
+
+    server
+      .get('https://raw.githubusercontent.com/adobe/theblog/branch3p/helix-redirects.yaml')
+      .intercept((req, res) => {
+        if (req.headers.authorization !== 'token foobar') {
+          res.status(404).send();
+          return;
+        }
+        res.status(200).send(`
+redirects:
+  - from: (.*).php
+    to: $1.html
+      `);
+      });
+
+    const result = await index({
+      owner: 'adobe',
+      repo: 'theblog',
+      ref: 'branch3p',
+      path: '/test.php',
+      __ow_headers: {
+        'x-github-token': 'foobar',
+      },
+    });
+    assert.equal(result.statusCode, 301);
   });
 
   it('301 for PHP', async function test() {

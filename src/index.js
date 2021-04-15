@@ -25,14 +25,22 @@ async function main(req) {
   const repo = searchParams.get('repo');
   const ref = searchParams.get('ref');
   const path = searchParams.get('path');
+  const githubToken = req.headers.get('x-github-token');
   if (!(owner && repo && ref)) {
     return new Response('missing owner, repo, or ref', {
       status: 400,
     });
   }
 
+  const opts = {};
+  if (githubToken) {
+    opts.headers = {
+      authorization: `token ${githubToken}`,
+    };
+  }
+
   const config = await new RedirectConfig()
-    .withRepo(owner, repo, ref)
+    .withRepo(owner, repo, ref, opts)
     .init();
 
   const match = await config.match(path);

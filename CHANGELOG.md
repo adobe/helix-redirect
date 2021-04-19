@@ -1,3 +1,10 @@
+## [1.4.9](https://github.com/adobe/helix-redirect/compare/v1.4.8...v1.4.9) (2021-04-19)
+
+
+### Bug Fixes
+
+* **deps:** update adobe fixes ([#239](https://github.com/adobe/helix-redirect/issues/239)) ([c74daea](https://github.com/adobe/helix-redirect/commit/c74daea9cfc13311d3eb3ea369d462a7e9b1ade0))
+
 ## [1.4.8](https://github.com/adobe/helix-redirect/compare/v1.4.7...v1.4.8) (2021-04-19)
 
 

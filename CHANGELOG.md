@@ -1,3 +1,10 @@
+## [1.4.12](https://github.com/adobe/helix-redirect/compare/v1.4.11...v1.4.12) (2021-04-25)
+
+
+### Bug Fixes
+
+* **deps:** update dependency @adobe/helix-shared to v7.27.0 ([#244](https://github.com/adobe/helix-redirect/issues/244)) ([ad6f79a](https://github.com/adobe/helix-redirect/commit/ad6f79afe5f1635d128322f81822dae3d04db6c1))
+
 ## [1.4.11](https://github.com/adobe/helix-redirect/compare/v1.4.10...v1.4.11) (2021-04-20)
 
 

@@ -76,7 +76,7 @@ createTargets().forEach((target) => {
         .catch((e) => {
           throw e;
         });
-    }).timeout(20000);
+    }).timeout(50000);
 
     it('/feed/ Redirect', async () => {
       const qs = '?owner=adobe&repo=theblog&ref=34e880537c4bb787cdc6df0b71fcf76cc496bca5&path=/tags/news/feed/';

@@ -1,3 +1,10 @@
+## [1.4.13](https://github.com/adobe/helix-redirect/compare/v1.4.12...v1.4.13) (2021-04-26)
+
+
+### Bug Fixes
+
+* **test:** give post-deploy test a little more time ([03d255c](https://github.com/adobe/helix-redirect/commit/03d255c5d0f09dd11f175e6afcadf7d918726eae))
+
 ## [1.4.12](https://github.com/adobe/helix-redirect/compare/v1.4.11...v1.4.12) (2021-04-25)
 
 

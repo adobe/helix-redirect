@@ -10,10 +10,10 @@
  * governing permissions and limitations under the License.
  */
 const { Response } = require('@adobe/helix-universal');
-const { wrap } = require('@adobe/helix-shared');
+const wrap = require('@adobe/helix-shared-wrap');
 const { logger } = require('@adobe/helix-universal-logger');
 const { wrap: status } = require('@adobe/helix-status');
-const RedirectConfig = require('@adobe/helix-shared/src/RedirectConfig');
+const { RedirectConfig } = require('@adobe/helix-shared-config');
 
 /**
  * This is the main function

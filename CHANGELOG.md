@@ -1,3 +1,10 @@
+## [1.4.24](https://github.com/adobe/helix-redirect/compare/v1.4.23...v1.4.24) (2021-05-31)
+
+
+### Bug Fixes
+
+* use latest orb ([e0dc95d](https://github.com/adobe/helix-redirect/commit/e0dc95dbcab9706bc590f8f7c477c6d3040958be))
+
 ## [1.4.23](https://github.com/adobe/helix-redirect/compare/v1.4.22...v1.4.23) (2021-05-31)
 
 

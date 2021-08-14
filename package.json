@@ -32,7 +32,7 @@
   },
   "homepage": "https://github.com/adobe/helix-redirect#readme",
   "dependencies": {
-    "@adobe/helix-shared-config": "1.1.13",
+    "@adobe/helix-shared-config": "1.1.14",
     "@adobe/helix-shared-wrap": "1.0.0",
     "@adobe/helix-status": "9.2.1",
     "@adobe/helix-universal": "1.6.6",
@@ -40,7 +40,7 @@
   },
   "devDependencies": {
     "@adobe/eslint-config-helix": "1.1.5",
-    "@adobe/helix-deploy": "4.9.5",
+    "@adobe/helix-deploy": "4.9.6",
     "@pollyjs/adapter-node-http": "5.1.1",
     "@pollyjs/core": "5.1.1",
     "@pollyjs/persister-fs": "5.1.1",

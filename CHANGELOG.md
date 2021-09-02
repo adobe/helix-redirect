@@ -1,3 +1,10 @@
+## [1.4.42](https://github.com/adobe/helix-redirect/compare/v1.4.41...v1.4.42) (2021-09-02)
+
+
+### Bug Fixes
+
+* **deps:** update dependency @adobe/helix-universal to v1.6.8 ([acca8f4](https://github.com/adobe/helix-redirect/commit/acca8f4404977179dda1e8567a9b8931361a241b))
+
 ## [1.4.41](https://github.com/adobe/helix-redirect/compare/v1.4.40...v1.4.41) (2021-08-30)
 
 

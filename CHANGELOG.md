@@ -1,3 +1,10 @@
+## [1.4.49](https://github.com/adobe/helix-redirect/compare/v1.4.48...v1.4.49) (2021-09-21)
+
+
+### Bug Fixes
+
+* **deps:** update dependency @adobe/helix-status to v9.2.3 ([#333](https://github.com/adobe/helix-redirect/issues/333)) ([4dd52ec](https://github.com/adobe/helix-redirect/commit/4dd52ec6fe95eda8ecb274a1e398afe57f840a2f))
+
 ## [1.4.48](https://github.com/adobe/helix-redirect/compare/v1.4.47...v1.4.48) (2021-09-17)
 
 

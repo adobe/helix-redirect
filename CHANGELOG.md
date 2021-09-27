@@ -1,3 +1,10 @@
+## [1.4.50](https://github.com/adobe/helix-redirect/compare/v1.4.49...v1.4.50) (2021-09-27)
+
+
+### Bug Fixes
+
+* **deps:** use secrets-manager ([efc93aa](https://github.com/adobe/helix-redirect/commit/efc93aabea9a968648a125a226c3cbebfc9aaaa2))
+
 ## [1.4.49](https://github.com/adobe/helix-redirect/compare/v1.4.48...v1.4.49) (2021-09-21)
 
 

@@ -75,8 +75,7 @@ jobs:
       # for more available parameters
       - helix-post-deploy/monitoring:
           statuspage_name: Helix Redirect
-          statuspage_group: Delivery
-          newrelic_group_policy: Delivery Repeated Failure
+          statuspage_group: Delivery (Legacy)
           targets: universal, aws
 
   branch-deploy:

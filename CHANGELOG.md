@@ -1,3 +1,10 @@
+## [1.4.64](https://github.com/adobe/helix-redirect/compare/v1.4.63...v1.4.64) (2022-02-03)
+
+
+### Bug Fixes
+
+* **deps:** update adobe fixes ([#406](https://github.com/adobe/helix-redirect/issues/406)) ([b710a33](https://github.com/adobe/helix-redirect/commit/b710a33a355fd3e265604b8b4095a1021941bc66))
+
 ## [1.4.63](https://github.com/adobe/helix-redirect/compare/v1.4.62...v1.4.63) (2022-01-27)
 
 
